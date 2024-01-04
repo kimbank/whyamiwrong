@@ -16,6 +16,44 @@ export async function GET(req, { params }) {
     return Response.json(snack_quiz);
 }
 
+export async function POST(req, { params }) {
+    const { user_id, snack_quiz_id, selection } = await req.json();
+
+    const snack_quiz = await prisma.snack_quiz.findFirst({
+        where: {
+            snack_quiz_id: snack_quiz_id,
+        },
+    });
+
+    const obj = snack_quiz.selections;
+
+    let is_correct = 0; 
+
+    if(obj.answer == selection){
+        is_correct = 1;
+        const users = await prisma.user.updateMany({
+            where: {
+                user_id : user_id,
+            },
+            data: {
+                solved: {
+                    increment : 1,
+                },
+            },
+        });
+    };
+
+    const solutions = await prisma.solutions.create({
+        data: {
+            snack_quiz_id : snack_quiz_id,
+            user_id : user_id,
+            is_correct: is_correct,
+        }
+    })
+
+    return Response.json({ user_id, snack_quiz_id, is_correct })
+}
+
 /**
  * @swagger
  * /snack/{snackId}/quiz/{quizId}:
@@ -54,5 +92,5 @@ export async function GET(req, { params }) {
  *               created_by: null
  *               tag:
  *                 1: "자료구조"
- *                 2: "배열"
+ *                 2: "배열"   
  */

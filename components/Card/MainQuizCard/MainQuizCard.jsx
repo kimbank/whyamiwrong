@@ -3,15 +3,12 @@ import styled from "styled-components";
 //import { useNavigate } from "react-router-dom";
 //import Typo from "../../assets/Typo";
 import Margin from "@/components/Margin/Margin";
+import { GrView } from "react-icons/gr";
 
 
 
 
-const CardBlock = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`; // page에서 사용
+
 
 const CardEach = styled.div`
   display: flex;
@@ -54,7 +51,7 @@ const TextWrapper = styled.div`
   flex-direction: column;
   justify-content: left;
   margin-bottom: 15px;
-  //margin-left: 15px;
+
   margin-right: 15px;
   line-height: 18px;
   width: 100%;
@@ -64,9 +61,9 @@ const TextWrapper2 = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: right;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   margin-left: 30px;
-  margin-right: 15px;
+  margin-right: 10px;
   line-height: 18px;
   color:gray;
 
@@ -90,12 +87,17 @@ const TextBox = styled.div`
   padding-left: 15px;
 `;
 
-const MainCard = ({
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+
+const MainQuizCard = ({
   image,
   title,
   category,
   category2,
-  num,
+  view,
   onClick,
 }) => {
  // const navigate = useNavigate();
@@ -103,6 +105,7 @@ const MainCard = ({
     <CardEach onClick={onClick}>
       <Thumbnail image={image} />
       <TitleWrapper>
+        <Margin height="5"/>
         {title}
       </TitleWrapper>
       <TextBox>
@@ -115,7 +118,12 @@ const MainCard = ({
 
         <TextWrapper2>
           <Margin height="6" />
-          {num}
+            <Wrapper>
+                <Margin width="5"/>
+                <GrView /> 
+                <Margin width="10"/>
+                {view}views
+            </Wrapper>
           <Margin height="5" />
           
         </TextWrapper2>
@@ -124,4 +132,4 @@ const MainCard = ({
   );
 };
 
-export default MainCard;
+export default MainQuizCard;

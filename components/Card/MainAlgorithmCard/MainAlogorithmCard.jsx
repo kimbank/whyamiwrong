@@ -45,7 +45,7 @@ const Thumbnail = styled.div`
   border-radius: 10px;
 
 
-  height: 174px;
+  height: 200px;
   width: 100%;
 `;
 
@@ -115,7 +115,7 @@ const MainCard = ({
 
         <TextWrapper2>
           <Margin height="6" />
-          {num}
+          {num}문제
           <Margin height="5" />
           
         </TextWrapper2>

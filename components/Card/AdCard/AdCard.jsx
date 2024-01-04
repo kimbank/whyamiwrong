@@ -6,7 +6,7 @@ import Margin from "../../Margin/Margin"
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 36vh;
+  height: 45vh;
   position: relative;
   box-sizing: border-box;
 `;
@@ -27,7 +27,7 @@ const itemsVariants = {
     opacity: 1,
     transition: {
       delay: 0.5,
-      staggerChildren: 3,
+      staggerChildren: 4, //delay 시간 
       repeat: Infinity,
     },
   },

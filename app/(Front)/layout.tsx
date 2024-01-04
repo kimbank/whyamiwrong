@@ -11,6 +11,9 @@ import Wrapper from "@/components/shared/wrapper";
 import { RecoilRoot } from 'recoil';
 
 
+
+
+
 export const metadata = {
   title: "WhyisWrong",
   description: "맞았는데 왜 틀렸지?",
